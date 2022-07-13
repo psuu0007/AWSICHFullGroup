@@ -23,3 +23,5 @@ public class ForApplyExam {
 	}
 
 }
+
+// 나는 상대랑 대화 없이 그냥 필요해서 이 내용을 변경했어
