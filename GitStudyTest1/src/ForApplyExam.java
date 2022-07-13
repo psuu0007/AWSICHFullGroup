@@ -7,7 +7,7 @@ public class ForApplyExam {
 		
 		for (int i = 0; i <= 10; i++) {
 //			System.out.println("i가 2인 경우에만 수행되는 조건문");
-			if(i == 2) {
+			if(i % 2 == 0) {
 				sum = sum + i;
 				System.out.println("i의 현재 위치: " + i + " - 합계: " + sum);
 				
