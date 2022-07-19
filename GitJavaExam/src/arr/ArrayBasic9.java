@@ -1,6 +1,6 @@
 package arr;
 public class ArrayBasic9 {
-
+//	디버깅(debug)
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
