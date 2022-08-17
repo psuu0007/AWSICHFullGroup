@@ -1,0 +1,285 @@
+
+
+SMITH와 동일한 근무지에서 근무하는 사원의 이름을 출력하시오
+MyName		ENAME
+SMITH		JONES
+SMITH		FORD
+
+
+
+OUTER JOIN (외부 조인)
+2개 이상의 테이블이 조인될 때 어느 한쪽의 테이블에는 
+해당하는 데이터가 존재하는데 다른 쪽 테이블에는
+데이터가 존재하지 않는 경우 그 데이터는 출력되지 않는 문제를
+해결하기 위해서 사용되는 조인 기법이다
+
+INNER JOIN과 대비하여 JOIN 조건에서 동일한 값이 없는
+행도 반환할 때 사용할 수 있다
+
+형식
+(+) 기호를 적는다
+어디에다가 적나?
+(+)위치는 데이터가 부족한 컬럼의 이름 뒤에 붙인다
+
+SELECT EE.ENAME 직원명, MA.ENAME 상사명
+FROM EMP EE, EMP MA
+WHERE EE.MGR = MA.EMPNO(+);
+
+
+부서 테이블의 40번 부서와 조인할 사원 테이블의 부서 번호가 없지만
+40번 부서의 이름도 출력되도록 쿼리문을 작성하시오
+
+ENAME		DEPTNO 		DNAME
+CLARK		10		ACCOUNTING
+MILLER		10		ACCOUNTING
+JONES		20		RESEARCH
+SMITH		20		RESEARCH
+FORD		20		RESEARCH
+JAMES		30		SALES
+BLAKE		30		SALES
+MARTIN		30		SALES
+TURNER		30		SALES
+ALLEN		30		SALES
+			40		OPERATIONS
+
+ANSI JOIN(표준 조인)
+국내뿐만 아니라 전 세계적으로 많이 사용되고 있는 관계형 
+데이터베이스 경우 오브젝트 개념을 포함한 여러 새로운 기능들이 
+꾸준히 개발되고 있다.
+다양한 데이터베이스가 각자의 문법을 사용하여 
+용어의 차이가 너무 커져서 상호 호환성이나 SQL 학습 효율이 
+많이 부족한 문제가 발생하였다
+이를 향후 SQL에서 필요한 기능을 정리하고 호환 가능한 여러 기준을 
+제정한 것이 ANSI/ISO SQL이다
+ANSI에서 표준 기술을 정립하면서 많이 좋아졌다
+
+다른 DBMS와의 호환성을 위해서는 ANSI 조인을 사용하는 것이 좋다
+ANSI 조인은 지금까지 학습한 SQL 조인보다 더욱 간편하고 
+완벽한 포괄 조인 지원이 가능하게 되었다
+
+
+CROSS JOIN
+WHERE 절을 생략한 채 사용한다
+
+형식
+오라클 조인
+SELECT *
+FROM 테이블, 테이블2;
+
+ANSI 조인
+SELECT *
+FROM 테이블 CROSS JOIN 테이블2;
+
+
+
+
+INNER JOIN (내부 조인) = 동등 조인
+
+
+MANAGER에 속한 사원들의 부서 정보를 
+사원명이 빠른순으로 출력하시오
+
+사원번호		사원명	직업		부서번호		부서명
+
+
+2개다 작성한다
+
+매너지 번호가 7698번인 사원들의 이름 및 소속 부서 코드
+부서 이름을 찾아라
+ENAME		MGR		DEPTNO		DNAME
+
+
+4개 행
+
+팀과 스타디움 테이블을 사용하여
+팀이름, 스타디움ID, 스타디움 이름을 조회하시오
+팀ID로 오름차순 정렬
+팀이름	스타디움ID	스타디움 이름		
+
+15행
+
+
+
+둘다 오라클 조인, 안시 조인
+GK 포지션의 선수별 연고지명, 팀명, 구장명을 출력하시오
+선수명을 사전순으로 
+
+선수번호	선수명	포지션	연고지명	팀ID		팀명		구장명
+
+
+
+
+홈팀이 3점 이상 차이로 승리한 경기의 경기장 이름,
+경기 일정, 홈팀 이름과 원정팀 이름 정보를 출력하시오
+경기장명이 빠른 순으로 정렬
+경기장명		경기장ID		경기일정		홈팀명
+상대팀명		홈팀점수		상대팀점수
+
+
+
+SELECT st.stadium_name 경기장명, sc.stadium_id 경기장ID
+    , sc.sche_date 경기일정, HT.TEAM_NAME 홈팀명
+    , at.team_name 상대팀명, sc.home_score 홈팀점수
+    , sc.away_score 상대팀점수
+FROM SCHEDULE SC, STADIUM ST, TEAM HT, TEAM AT
+WHERE sc.stadium_id = st.stadium_id
+AND sc.hometeam_id = ht.team_id
+AND sc.awayteam_id = at.team_id
+AND SC.HOME_SCORE >= SC.AWAY_SCORE + 3
+ORDER BY st.stadium_name ASC;
+
+
+ANSI OUTER JOIN
+
+형식
+SELECT *
+FROM TABLE1 [LEFT | RIGTH | FULL] OUTER JOIN TABLE2;
+
+
+
+STADIUM에 등록된 운동장 중에 홈팀이 없는 경기장이 존재한다
+홈팀 없는 경기장의 정보도 출력되게 하시오
+경기장ID가 느린 순으로 출력하시오
+
+경기장ID		경기자명		좌석수	홈ID		팀명
+
+
+
+서브 쿼리(SUB QUERY)
+하나의 SQL문안에 포함되어 있는 또 다른 SQL문을 말한다
+
+서브쿼리 구조
+SELECT ...				메인 쿼리
+FROM ...
+WHERE ... (SELECT ...		서브 쿼리
+			FROM ...
+			WHERE ...
+          );
+
+메인쿼리가 서브쿼리를 포함하는 종속적인 관계이다
+
+
+서브쿼리를 사용할 때 주의사항
+1. 서브쿼리를 괄호로 감싸서 사용한다
+2. 서브쿼리는 단일 행 또는 복수 행 비교 연산자와 함께 사용이 가능하다
+단일 행 비교 연산자는 서브쿼리의 결과가 반드시 1건 이하이어야 하고
+복수 행 비교 연산자는 서브쿼리의 결과 건수와 상관 없다
+3. 서브쿼리에서는 ORDER BY를 사용하지 못한다. ORDER BY절은 
+SELECT 절에서 오직 한 개만 올 수 있기 때문에
+ORDER BY 절은 메인쿼리의 마지막 문장에 위치해야 한다
+4. 서브쿼리는 메인 쿼리가 실행되기 이전에 한 번만 실행이 된다
+
+서브쿼리가 SQL문에서 사용이 가능한 곳
+-SELECT 절
+-FROM 절
+-WHERE 절
+-HAVING 절
+-ORDER BY 절
+-INSERT문의 VALUES 절
+-UPDATE문의 SET 절
+
+서브쿼리의 종류는 동작하는 방식이나 반환되는 데이터의 형태에 따라 분류된다
+서브쿼리 종류				설명
+비연관 서브쿼리				서브쿼리가 메인쿼리 컬럼을 가지고 있지 않는 형태
+						메인쿼리에 값을 제공하기 위한 목적으로 주로 사용
+연관 서브쿼리				서브쿼리가 메인쿼리 컬럼을 가지고 있는 형태의 서브쿼리
+					일반적으로 메인쿼리가 먼저 수행되어 읽혀진 데이터를 
+					서브쿼리에서 조건이 맞는지 확인하고자 할 때 주로 사용
+					
+반환되는 데이터의 형태에 따른 서브쿼리 종류
+서브쿼리 종류			설명
+단일행 서브쿼리			서브쿼리의 실행결과가 항상 1건 이하인 서브쿼리를 의미
+				단일행 비교 연산자와 함께 사용된다. =, <, <=, >, >=, <>
+				등이 있다
+다중행 서브쿼리			서브쿼리의 실행결과가 여러 건인 서브쿼리를 의미
+				다중행 비교 연산자와 함께 사용된다. IN, ALL, ANY, SOME등이 있다
+				
+다중컬럼 서브쿼리		서브쿼리의 실행 결과로 여러 컬럼을 반환한다. 메인쿼리의 조건절에
+				여러 컬럼을 동시에 비교할 수 있다. 서브쿼리와 메인쿼리에서 비교하고자
+				하는 컬럼 개수와 컬럼의 위치가 동일해야 한다
+				
+	
+
+SMITH와 같은 부서에서 근무하는 사원의 이름과 
+부서의 번호를 출력하시오
+ENAME		DEPTNO
+
+
+single-row subquery returns more than one row
+
+1
+WARD와 동일한 직급을 가진 사원을 출력하는 SQL문을 작성하시오
+모든 컬럼
+
+2
+BLAKE의 급여와 동일하거나 더 많이 받는 사원명과 급여를 출력하시오
+ENAME		SAL
+
+3
+DALLAS에서 근무하는 사원의 이름, 부서 번호를 출력
+EMPNO   ENAME		DEPTNO		
+
+4
+영업부(SALES) 부서에서 근무하는 모든 사원의 이름과 급여를 출력
+ENAME		영업부		SAL		
+
+5자신의 직속상관이 KING인 사원의 이름과 급여를 출력하시오
+ENAME		SAL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
