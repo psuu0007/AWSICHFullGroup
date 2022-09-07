@@ -22,16 +22,20 @@ table, tr, td{
 }
 </style>
 <script type="text/javascript">
-	function spMan() {
-		var obj = document.getElementsByName("sports");
+
+	function spman() {
+		var inputTag = document.getElementsByName('sports');
 		
-		for (var i = 0; i < obj.length; i++) {
-			if (obj[i].checked) {
-				alert(obj[i].value);
-				break;
+		for (var i = 0; i < inputTag.length; i++) {
+			var tagCheck = inputTag[i].checked;
+			
+			if(tagCheck == true) {
+				alert(inputTag[i].value);
 			}
 		}
 	}
+	
+
 </script>
 </head>
 <body>
@@ -44,7 +48,7 @@ table, tr, td{
 				<input type="radio" name="sports" value="baseball">야구<br>
 				<input type="radio" name="sports" value="soccer">축구<br> 
 				<input type="radio" name="sports" value="basketball">농구<br>
-				<input type="button" value="결정!" onclick="spMan();">
+				<input type="button" value="결정!" onclick="spman();">
 			</td>
 		</tr>
 	</table>
