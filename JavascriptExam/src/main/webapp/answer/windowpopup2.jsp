@@ -10,12 +10,17 @@
 		
 		</style>
 		
+		<script type="text/javascript">
 		
+		</script>
 		
 	</head>
 	
 	<body>
-
-
+		<div id='divChild1'>
+			<input type="text" value="년도">
+			<input type="text" value="월">
+			<input type="text" value="일">
+		</div>		
 	</body>
 </html>

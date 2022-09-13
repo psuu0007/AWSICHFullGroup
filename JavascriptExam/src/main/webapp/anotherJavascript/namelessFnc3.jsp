@@ -10,12 +10,22 @@
 		
 		</style>
 		
+		<script type="text/javascript">
+		
+		</script>
 		
 		
 	</head>
 	
 	<body>
-
-
+		
+		<hr>
+		
+		<div id='resultObj'>
+			<input type="text" value="">
+		</div>
+		
 	</body>
+	
+	
 </html>

@@ -11,11 +11,14 @@
 		</style>
 		
 		
+		<script type="text/javascript">
+		
+		</script>
 		
 	</head>
 	
 	<body>
-
-
+		<h1>첫 페이지</h1>
+		<a href="historyTest2.jsp">두번째페이지 이동</a>
 	</body>
 </html>

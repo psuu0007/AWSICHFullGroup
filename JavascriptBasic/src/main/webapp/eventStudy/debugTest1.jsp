@@ -11,11 +11,17 @@
 		</style>
 		
 		
+		<script type="text/javascript">
+			
+			for (var i = 0; i < 10; i++) {
+				document.write(i);
+			}
+			
+		</script>
 		
 	</head>
 	
 	<body>
-
-
+		
 	</body>
 </html>
