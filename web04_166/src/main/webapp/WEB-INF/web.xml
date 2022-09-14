@@ -10,12 +10,21 @@
   	<servlet-name>MemberList</servlet-name>
   	<servlet-class>spms.servlets.MemberListServlet</servlet-class>
   </servlet>
-  
   <servlet-mapping>
   	<servlet-name>MemberList</servlet-name>
   	<url-pattern>/member/list</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>MemberAdd</servlet-name>
+  	<servlet-class>
+  		spms.servlets.MemberAddServlet
+  	</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MemberAdd</servlet-name>
+  	<url-pattern>/member/add</url-pattern>
+  </servlet-mapping>
   
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
